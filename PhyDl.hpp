@@ -2,28 +2,35 @@
 
 class PhyDlBuilder : public IPhyDlMsgBuilder
 {
-protected:
-    void buildCommon()
+public:
+    PhyDlBuilder(const std::shared_ptr<IPhyDlTechMsgBuilder>& p_phyDlTechMsgBuilder) :
+        m_phyDlTechMsgBuilder(p_phyDlTechMsgBuilder)
+    {}
+
+    void build() override
     {
         std::cout << "PhyDlBuilder.build begin\n";
+        m_phyDlTechMsgBuilder->build();
         std::cout << "PhyDlBuilder.build end\n";
     }
+private:
+    std::shared_ptr<IPhyDlTechMsgBuilder> m_phyDlTechMsgBuilder;
 };
 
-class FddPhyDlBuilder : public PhyDlBuilder
+class FddPhyDlBuilder : public IPhyDlTechMsgBuilder
 {
+public:
     void build() override
     {
-        std::cout << "FddPhyDlBuilder\n";
-        buildCommon();
+        std::cout << "FddPhyDlBuilder.build\n";
     }
 };
 
-class TddPhyDlBuilder : public PhyDlBuilder
+class TddPhyDlBuilder : public IPhyDlTechMsgBuilder
 {
+public:
     void build() override
     {
-        std::cout << "TddPhyDlBuilder\n";
-        buildCommon();
+        std::cout << "TddPhyDlBuilder.build\n";
     }
 };

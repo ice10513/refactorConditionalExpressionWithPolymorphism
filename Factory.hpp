@@ -10,26 +10,26 @@ public:
     {
         if (p_tech == Tech::Fdd)
         {
-            return std::make_shared<FddPhyUlBuilder>();
+            return std::make_shared<PhyUlBuilder>(std::make_shared<FddPhyUlBuilder>());
         }
-        return std::make_shared<TddPhyUlBuilder>();
+        return std::make_shared<PhyUlBuilder>(std::make_shared<TddPhyUlBuilder>());
     }
 
     std::shared_ptr<IPhyDlMsgBuilder> createPhyDlBuilder(Tech p_tech) override
     {
         if (p_tech == Tech::Fdd)
         {
-            return std::make_shared<FddPhyDlBuilder>();
+            return std::make_shared<PhyDlBuilder>(std::make_shared<FddPhyDlBuilder>());
         }
-        return std::make_shared<TddPhyDlBuilder>();
+        return std::make_shared<PhyDlBuilder>(std::make_shared<TddPhyDlBuilder>());
     }
 
     std::shared_ptr<IMacMsgBuilder> createMacBuilder(Tech p_tech) override
     {
         if (p_tech == Tech::Fdd)
         {
-            return std::make_shared<FddMacBuilder>();
+            return std::make_shared<MacBuilder>(std::make_shared<FddMacBuilder>());
         }
-        return std::make_shared<TddMacBuilder>();
+        return std::make_shared<MacBuilder>(std::make_shared<TddMacBuilder>());
     }
 };

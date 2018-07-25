@@ -22,6 +22,18 @@ class IPhyDlMsgBuilder : public IMsgBuilder
 class IMacMsgBuilder : public IMsgBuilder
 {};
 
+class ITechMsgBuilder : public IMsgBuilder
+{};
+
+class IPhyUlTechMsgBuilder : public ITechMsgBuilder
+{};
+
+class IPhyDlTechMsgBuilder : public ITechMsgBuilder
+{};
+
+class IMacTechMsgBuilder : public ITechMsgBuilder
+{};
+
 class IMsgBuilderFactory
 {
 public:

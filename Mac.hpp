@@ -2,28 +2,35 @@
 
 class MacBuilder : public IMacMsgBuilder
 {
-protected:
-    void buildCommon()
+public:
+    MacBuilder(const std::shared_ptr<IMacTechMsgBuilder>& p_macTechMsgBuilder) :
+        m_macTechMsgBuilder(p_macTechMsgBuilder)
+    {}
+
+    void build() override
     {
         std::cout << "MacBuilder.build begin\n";
+        m_macTechMsgBuilder->build();
         std::cout << "MacBuilder.build end\n";
     }
+private:
+    std::shared_ptr<IMacTechMsgBuilder> m_macTechMsgBuilder;
 };
 
-class FddMacBuilder : public MacBuilder
+class FddMacBuilder : public IMacTechMsgBuilder
 {
+public:
     void build() override
     {
-        std::cout << "FddMacBuilder\n";
-        buildCommon();
+        std::cout << "FddMacBuilder.build\n";
     }
 };
 
-class TddMacBuilder : public MacBuilder
+class TddMacBuilder : public IMacTechMsgBuilder
 {
+public:
     void build() override
     {
-        std::cout << "TddMacBuilder\n";
-        buildCommon();
+        std::cout << "TddMacBuilder.build\n";
     }
 };
