@@ -42,3 +42,12 @@ public:
     virtual std::shared_ptr<IPhyDlMsgBuilder> createPhyDlBuilder(Tech) = 0;
     virtual std::shared_ptr<IMacMsgBuilder> createMacBuilder(Tech) = 0;
 };
+
+class ITechMsgBuilderFactory
+{
+public:
+    virtual ~ITechMsgBuilderFactory() = default;
+    virtual std::shared_ptr<IPhyUlTechMsgBuilder> createPhyUlTechBuilder(Tech) = 0;
+    virtual std::shared_ptr<IPhyDlTechMsgBuilder> createPhyDlTechBuilder(Tech) = 0;
+    virtual std::shared_ptr<IMacTechMsgBuilder> createMacTechBuilder(Tech) = 0;
+};
