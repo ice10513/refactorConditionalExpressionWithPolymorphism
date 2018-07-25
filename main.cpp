@@ -6,9 +6,9 @@ int main()
 {
     MsgBuilderFactory l_msgBuilderFacotry;
 
-    l_msgBuilderFacotry.createPhyUlBuilder()->build(Tech::Fdd);
-    l_msgBuilderFacotry.createPhyDlBuilder()->build(Tech::Tdd);
-    l_msgBuilderFacotry.createMacBuilder()->build(Tech::Fdd);
+    l_msgBuilderFacotry.createPhyUlBuilder(Tech::Fdd)->build();
+    l_msgBuilderFacotry.createPhyDlBuilder(Tech::Tdd)->build();
+    l_msgBuilderFacotry.createMacBuilder(Tech::Fdd)->build();
 
     return 0;
 }

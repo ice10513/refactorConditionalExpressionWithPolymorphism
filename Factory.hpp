@@ -6,18 +6,30 @@
 class MsgBuilderFactory : public IMsgBuilderFactory
 {
 public:
-    std::shared_ptr<IPhyUlMsgBuilder> createPhyUlBuilder() override
+    std::shared_ptr<IPhyUlMsgBuilder> createPhyUlBuilder(Tech p_tech) override
     {
-        return std::make_shared<PhyUlBuilder>();
+        if (p_tech == Tech::Fdd)
+        {
+            return std::make_shared<FddPhyUlBuilder>();
+        }
+        return std::make_shared<TddPhyUlBuilder>();
     }
 
-    std::shared_ptr<IPhyDlMsgBuilder> createPhyDlBuilder() override
+    std::shared_ptr<IPhyDlMsgBuilder> createPhyDlBuilder(Tech p_tech) override
     {
-        return std::make_shared<PhyDlBuilder>();
+        if (p_tech == Tech::Fdd)
+        {
+            return std::make_shared<FddPhyDlBuilder>();
+        }
+        return std::make_shared<TddPhyDlBuilder>();
     }
 
-    std::shared_ptr<IMacMsgBuilder> createMacBuilder() override
+    std::shared_ptr<IMacMsgBuilder> createMacBuilder(Tech p_tech) override
     {
-        return std::make_shared<MacBuilder>();
+        if (p_tech == Tech::Fdd)
+        {
+            return std::make_shared<FddMacBuilder>();
+        }
+        return std::make_shared<TddMacBuilder>();
     }
 };

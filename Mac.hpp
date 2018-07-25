@@ -2,18 +2,28 @@
 
 class MacBuilder : public IMacMsgBuilder
 {
-public:
-    void build(Tech p_tech) override
+protected:
+    void buildCommon()
     {
         std::cout << "MacBuilder.build begin\n";
-        if (p_tech == Tech::Fdd)
-        {
-            std::cout << "Fdd builder\n";
-        }
-        else
-        {
-            std::cout << "Tdd builder\n";
-        }
         std::cout << "MacBuilder.build end\n";
+    }
+};
+
+class FddMacBuilder : public MacBuilder
+{
+    void build() override
+    {
+        std::cout << "FddMacBuilder\n";
+        buildCommon();
+    }
+};
+
+class TddMacBuilder : public MacBuilder
+{
+    void build() override
+    {
+        std::cout << "TddMacBuilder\n";
+        buildCommon();
     }
 };
