@@ -4,11 +4,11 @@
 
 int main()
 {
-    MsgBuilderFactory l_msgBuilderFacotry(std::make_shared<TechMsgBuilderFactoryFactory>());
+    TechMsgBuilderFactory l_techMsgBuilderFacotry;
 
-    l_msgBuilderFacotry.createPhyUlBuilder(Tech::Fdd)->build();
-    l_msgBuilderFacotry.createPhyDlBuilder(Tech::Tdd)->build();
-    l_msgBuilderFacotry.createMacBuilder(Tech::Fdd)->build();
+    l_techMsgBuilderFacotry.createMsgBuilderFactory(Tech::Fdd)->createPhyUlBuilder()->build();
+    l_techMsgBuilderFacotry.createMsgBuilderFactory(Tech::Tdd)->createPhyDlBuilder()->build();
+    l_techMsgBuilderFacotry.createMsgBuilderFactory(Tech::Fdd)->createMacBuilder()->build();
 
     return 0;
 }
